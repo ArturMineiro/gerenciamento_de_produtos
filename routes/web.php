@@ -4,6 +4,7 @@ use Illuminate\Routing\RouteGroup;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ProdutoController;
+use App\Http\Controllers\CategoriaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,4 +33,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/produtos/{id}/edit', [ProdutoController::class, 'edit'])->name('produto.edit');
     Route::put('/produtos/{id}', [ProdutoController::class, 'update'])->name('produto.update');
     Route::delete('/produtos/{id}', [ProdutoController::class, 'delete'])->name('produto.delete');
+
+    Route::get('/categorias', [CategoriaController::class, 'index'])->name('categoria.index');
+    Route::get('/categorias/create', [CategoriaController::class, 'create'])->name('categoria.create');
+    Route::post('/categorias', [CategoriaController::class, 'store'])->name('categoria.store');
+    Route::get('/categorias/{id}/edit', [CategoriaController::class, 'edit'])->name('categoria.edit');
+    Route::put('/caregorias/{id}', [CategoriaController::class, 'update'])->name('categoria.update');
+    Route::delete('/categorias/{id}', [CategoriaController::class, 'delete'])->name('categoria.delete');
 });
+
+
