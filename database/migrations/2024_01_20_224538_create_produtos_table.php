@@ -13,6 +13,9 @@ class CreateProdutosTable extends Migration
             $table->string('codigo')->unique();
             $table->decimal('valor', 10, 2);
             $table->integer('quantidade');
+            $table->unsignedBigInteger('categoria_id')->nullable();
+            $table->foreign('categoria_id')->references('id')->on('categorias')->onDelete('set null')->name('fk_categoria_id'); // Aqui estamos definindo explicitamente o nome da chave estrangeira
+    
             $table->timestamps();
         });
     }

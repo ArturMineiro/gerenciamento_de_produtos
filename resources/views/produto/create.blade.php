@@ -1,4 +1,5 @@
-<!-- resources/views/produto/create.blade.php -->
+<!-- produto.create.blade.php -->
+
 @extends('layouts.app')
 
 @section('content')
@@ -22,6 +23,15 @@
             <label for="quantidade">Quantidade:</label>
             <input type="number" id="quantidade" name="quantidade">
         </div>
+        <div>
+    <label for="categoria_id">Categoria:</label>
+    <select name="categoria_id" id="categoria_id">
+        @foreach($categorias as $categoria)
+            <option value="{{ $categoria->id }}">{{ $categoria->tipo }}</option>
+        @endforeach
+    </select>
+</div>
+
         <button type="submit">Salvar</button>
     </form>
 </div>

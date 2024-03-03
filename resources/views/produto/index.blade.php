@@ -3,7 +3,7 @@
 
 @section('content')
 <div class="container">
-    <h1>produto</h1>
+    <h1>Produtos</h1>
     <a href="{{ route('produto.create') }}">Adicionar Produto</a>
     <table>
         <thead>
@@ -12,6 +12,7 @@
                 <th>Código</th>
                 <th>Valor</th>
                 <th>Quantidade</th>
+                <th>Categoria</th> <!-- Nova coluna para exibir a categoria -->
                 <th>Ações</th>
             </tr>
         </thead>
@@ -22,6 +23,8 @@
                     <td>{{ $produto->codigo }}</td>
                     <td>{{ $produto->valor }}</td>
                     <td>{{ $produto->quantidade }}</td>
+                    <td>{{ $produto->categoria_id ? $produto->categoria->tipo : 'N/A' }}</td> <!-- Verifica se categoria_id não é null antes de acessar a propriedade 'tipo' -->
+
                     <td>
                         <a href="{{ route('produto.edit', $produto->id) }}">Editar</a>
                         <form action="{{ route('produto.delete', $produto->id) }}" method="POST">

@@ -30,7 +30,7 @@ class CategoriaController extends Controller
 
         Categoria::create($request->all());
 
-        return redirect()->route('categorias.index')
+        return redirect()->route('categoria.index')
             ->with('success', 'Categoria criada com sucesso.');
     }
 
@@ -56,11 +56,11 @@ class CategoriaController extends Controller
     }
 
   
-    public function destroy($id)
-    {
-        Categoria::findOrFail($id)->delete();
-
-        return redirect()->route('categorias.index')
-            ->with('success', 'Categoria excluída com sucesso.');
+    public function delete($id)
+    { 
+         $categoria = Categoria::findOrFail($id);
+        $categoria->delete();
+    
+        return redirect()->route('categoria.index');;
     }
 }
