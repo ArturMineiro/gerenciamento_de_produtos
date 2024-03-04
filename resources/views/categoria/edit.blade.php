@@ -2,7 +2,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container  shadow-lg p-3 mb-5 bg-body rounded">
         <h2>Editar Categoria</h2>
         @if ($errors->any())
             <div class="alert alert-danger">

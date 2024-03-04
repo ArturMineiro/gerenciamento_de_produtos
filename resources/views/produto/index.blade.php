@@ -2,17 +2,18 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container  shadow-lg p-3 mb-5 bg-body rounded">
     <h1>Produtos</h1>
-    <a href="{{ route('produto.create') }}">Adicionar Produto</a>
-    <table>
+    <a href="{{ route('produto.create') }}" class="btn btn-primary mb-3">Adicionar Produto</a>
+    <a href="{{route('categoria.index')  }}" class="btn btn-warning mb-3"> Ir para categorias</a>
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th>Nome</th>
                 <th>Código</th>
                 <th>Valor</th>
                 <th>Quantidade</th>
-                <th>Categoria</th> <!-- Nova coluna para exibir a categoria -->
+                <th>Categoria</th>
                 <th>Ações</th>
             </tr>
         </thead>
@@ -23,14 +24,14 @@
                     <td>{{ $produto->codigo }}</td>
                     <td>{{ $produto->valor }}</td>
                     <td>{{ $produto->quantidade }}</td>
-                    <td>{{ $produto->categoria_id ? $produto->categoria->tipo : 'N/A' }}</td> <!-- Verifica se categoria_id não é null antes de acessar a propriedade 'tipo' -->
+                    <td>{{ $produto->categoria_id ? $produto->categoria->tipo : 'N/A' }}</td>
 
                     <td>
-                        <a href="{{ route('produto.edit', $produto->id) }}">Editar</a>
-                        <form action="{{ route('produto.delete', $produto->id) }}" method="POST">
+                        <a href="{{ route('produto.edit', $produto->id) }}" class="btn btn-sm btn-primary mr-1">Editar</a>
+                        <form action="{{ route('produto.delete', $produto->id) }}" method="POST" style="display: inline-block;">
                             @csrf
                             @method('DELETE')
-                            <button type="submit">Excluir</button>
+                            <button type="submit" class="btn btn-sm btn-danger">Excluir</button>
                         </form>
                     </td>
                 </tr>

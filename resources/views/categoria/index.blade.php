@@ -2,7 +2,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container  shadow-lg p-3 mb-5 bg-body rounded">
         <h2>Categorias</h2>
     
         @if (session('success'))
@@ -25,7 +25,7 @@
                         <td>{{ $categoria->id }}</td>
                         <td>{{ $categoria->tipo }}</td>
                         <td>
-                            <a href="{{ route('categoria.edit', $categoria->id) }}" class="btn btn-primary">Editar</a>
+                            <a href="{{ route('categoria.edit', $categoria->id) }}" class="btn btn-primary mb-2">Editar</a>
                             <form action="{{ route('categoria.delete', $categoria->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
@@ -36,5 +36,7 @@
                 @endforeach
             </tbody>
         </table>
+        <a href="{{ route('produto.index') }}" class="btn btn-primary">Voltar</a>
     </div>
+
 @endsection
