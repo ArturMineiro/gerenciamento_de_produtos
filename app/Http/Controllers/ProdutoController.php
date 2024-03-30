@@ -13,9 +13,15 @@ class ProdutoController extends Controller
 
     public function index()
     {
-        $categorias = Categoria::all();
-        $produto = Produto::all();
-        return view('produto.index', compact('produto'));
+        $produtos = Produto::all();
+        
+        // Calcular total de quantidade e valor
+        $total_quantidade = $produtos->sum('quantidade');
+        $total_valor = $produtos->sum(function ($produto) {
+            return $produto->valor * $produto->quantidade;
+        });
+    
+        return view('produto.index', compact('produtos', 'total_quantidade', 'total_valor'));
     }
 
     public function create()
@@ -63,11 +69,16 @@ public function update(Request $request, $id)
         'quantidade' => 'required'
     ]);
 
-    Produto::whereId($id)->update($validatedData);
+    Produto::whereId($id)->update([
+        'nome' => $request->nome,
+        'codigo' => $request->codigo,
+        'valor' => $request->valor,
+        'quantidade' => $request->quantidade,
+        'categoria_id' => $request->categoria_id
+    ]);
 
     return redirect()->route('produto.index');
 }
-
 public function delete($id)
 {
     $produto = Produto::findOrFail($id);
