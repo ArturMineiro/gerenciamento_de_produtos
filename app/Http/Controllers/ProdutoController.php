@@ -86,5 +86,33 @@ public function delete($id)
 
     return redirect()->route('produto.index');
 }
+public function pesquisar(Request $request)
+{
+    // Obter o termo de pesquisa da solicitação
+    $termo = $request->input('termo');
+
+    // Verificar se há um termo de pesquisa
+    if ($termo) {
+        // Se houver um termo de pesquisa, executar a consulta de pesquisa
+        $produtos = Produto::where('nome', 'LIKE', "%$termo%")->get();
+    } else {
+        // Se não houver termo de pesquisa, retornar todos os produtos
+        $produtos = Produto::all();
+    }
+
+    // Calcular total de quantidade e valor para os produtos encontrados
+    $total_quantidade = $produtos->sum('quantidade');
+    $total_valor = $produtos->sum(function ($produto) {
+        return $produto->valor * $produto->quantidade;
+    });
+
+    // Retornar a view com os resultados da pesquisa
+    return view('produto.index', [
+        'produtos' => $produtos,
+        'total_quantidade' => $total_quantidade,
+        'total_valor' => $total_valor
+    ]);
+}
+
 
 }

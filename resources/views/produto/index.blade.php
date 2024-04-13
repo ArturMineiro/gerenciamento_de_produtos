@@ -4,6 +4,13 @@
 @section('content')
 <div class="container shadow-lg p-3 mb-5 bg-body rounded">
     <h1>Produtos</h1>
+
+    <form action="{{ route('produto.pesquisar') }}" method="GET" class="mb-3 w-50">
+        <div class="input-group">
+            <input type="text" name="termo" class="form-control" placeholder="Pesquisar produtos...">
+            <button type="submit" class="btn btn-outline-secondary">Pesquisar</button>
+        </div>
+    </form>
     <a href="{{ route('produto.create') }}" class="btn btn-primary mb-3">Adicionar Produto</a>
     <a href="{{ route('categoria.index') }}" class="btn btn-warning mb-3">Ir para categorias</a>
     <table class="table table-striped">
@@ -39,7 +46,7 @@
     </table>
     <div class="mt-3">
         <h4>Total de Produtos Vendidos</h4>
-        <p><strong>Quantidade:</strong> {{ $total_quantidade }}</p>
+        <p><strong>Quantidade total produtos:</strong> {{ $total_quantidade }}</p>
         <p><strong>Valor Total:</strong> R$ {{ $total_valor }}</p>
     </div>
 </div>
