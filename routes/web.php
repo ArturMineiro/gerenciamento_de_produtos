@@ -42,6 +42,8 @@ Route::get('/produtos/pesquisar', [ProdutoController::class, 'pesquisar'])->name
     Route::get('/categorias/{id}/edit', [CategoriaController::class, 'edit'])->name('categoria.edit');
     Route::put('/caregorias/{id}', [CategoriaController::class, 'update'])->name('categoria.update');
     Route::delete('/categorias/{id}', [CategoriaController::class, 'delete'])->name('categoria.delete');
+    Route::get('/categorias/pesquisar', [CategoriaController::class, 'pesquisar'])->name('categoria.pesquisar');
+
 });
 
 

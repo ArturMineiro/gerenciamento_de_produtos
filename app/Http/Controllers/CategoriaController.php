@@ -9,7 +9,19 @@ use App\Models\Categoria;
 
 class CategoriaController extends Controller
 {
-    
+    public function pesquisar(Request $request)
+{
+    $termo = $request->input('termo');
+
+    if ($termo) {
+        $categorias = Categoria::where('tipo', 'LIKE', "%$termo%")->get();
+    } else {
+        $categorias = Categoria::all();
+    }
+
+    return view('categoria.index', compact('categorias'));
+}
+
     public function index()
     {
         $categorias = Categoria::all();

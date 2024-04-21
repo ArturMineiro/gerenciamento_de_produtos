@@ -63,7 +63,7 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => '<b>Administrador</b>',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -314,9 +314,9 @@ return [
        
         ['header' => 'account_settings'],
         [
-            'text' => 'Alterar senha',
+            'text' => '',
             'url'  => 'http://127.0.0.1:8000/produtos',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => '',
         ],
         [
             'text' => 'Produtos',

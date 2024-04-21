@@ -11,6 +11,12 @@
             </div>
         @endif
         <a href="{{ route('categoria.create') }}" class="btn btn-success">Criar Nova Categoria</a>
+        <form action="{{ route('categoria.pesquisar') }}" method="GET" class="mt-3 w-50">
+        <div class="input-group mb-3">
+            <input type="text" name="termo" class="form-control" placeholder="Pesquisar por tipo de categoria" aria-label="Pesquisar" aria-describedby="button-addon2">
+            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Pesquisar</button>
+        </div>
+    </form>
         <table class="table">
             <thead>
                 <tr>
